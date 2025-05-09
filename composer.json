@@ -1,0 +1,27 @@
+{
+    "name": "etienneclr/exercice_01",
+    "autoload": {
+        "psr-4": {
+            "Etienneclr\\Sympholist\\": "src/",
+            "Controllers\\": "src/controllers/",
+            "Interfaces\\": "src/interfaces/",
+            "Models\\": "src/models/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Etienne Caulier",
+            "email": "etienne.clr@eduge.ch"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.7",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "guzzlehttp/psr7": "^2",
+        "laminas/laminas-diactoros": "^3.5",
+        "slim/php-view": "^3.4",
+        "twbs/bootstrap": "^5.3"
+    }
+}

@@ -1,0 +1,7 @@
+/.vscode/
+
+/vendor/
+
+*Zone.Identifier*
+
+*desktop.ini*
