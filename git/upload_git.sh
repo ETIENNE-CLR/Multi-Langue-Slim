@@ -37,9 +37,9 @@ messageCommit=""
 dateActuelle=$(LC_TIME=fr_FR.UTF-8 date +"%A, %d %B %Y")
 if [ -z "$1" ]; then
     read -p "Quel est votre message de commit : " messageCommit
-    messageCommit="[$dateActuelle] $messageCommit"
+    messageCommit="$messageCommit"
 else
-    messageCommit="[$dateActuelle] $1"
+    messageCommit="$1"
 fi
 
 # Faire le commit
