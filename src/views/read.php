@@ -1,7 +1,16 @@
-<main class="col-lg-10 mx-auto m-5 p-3">
-    <h1 class="h2 mb-3"><?= _("Liste des personnes") ?></h1>
+<?php
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+use Controllers\LanguageController;
+?>
+<main class="col-lg-10 mx-auto m-5 p-3">
+
+    <div class="d-flex justify-content-start gap-1">
+        <a class="btn btn-link" href="?lang=fr">fr</a>
+        <a class="btn btn-link" href="?lang=en">en</a>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <h1 class="h2 mb-3"><?= _("Liste des personnes") ?></h1>
         <a href="/create" class="btn btn-success mb-3">
             <?= _("Ajouter une personne") ?>
             <i class="bi bi-person-fill-add"></i>

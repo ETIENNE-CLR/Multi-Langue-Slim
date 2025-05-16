@@ -8,24 +8,23 @@ class LanguageController
 {
     public const SESSION_KEY = 'language';
     private const LANGUAGES = [
-        1 => 'fr_FR',
-        2 => 'en_US',
+        'fr' => 'fr_FR',
+        'en' => 'en_US',
     ];
 
     public static function getLanguage(): string
     {
         if (!isset($_SESSION[self::SESSION_KEY])) {
-            self::setLanguage(1);
+            self::setLanguage('fr');
         }
         return self::LANGUAGES[$_SESSION[self::SESSION_KEY]] ?? '';
     }
 
-    public static function setLanguage(int $langId): void
+    public static function setLanguage(string $langId): void
     {
         if (!array_key_exists($langId, self::LANGUAGES)) {
             throw new Exception("Invalid language ID: $langId");
         }
-
         $_SESSION[self::SESSION_KEY] = $langId;
     }
 

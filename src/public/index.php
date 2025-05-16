@@ -18,6 +18,11 @@ require __DIR__ . '/../routes/web.php';
 
 // Multi-langues
 session_start();
+if (isset($_GET['lang'])) {
+    LanguageController::setLanguage($_GET['lang']);
+}
+
+// Définition de la langue
 $lg = LanguageController::getLanguage();
 $charset = 'UTF-8';
 $locale = "$lg.$charset";
