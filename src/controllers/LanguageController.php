@@ -6,12 +6,13 @@ use Exception;
 
 class LanguageController
 {
-    public const SESSION_KEY = 'language';
+    private const SESSION_KEY = 'language';
     private const LANGUAGES = [
         'fr' => 'fr_FR',
         'en' => 'en_US',
     ];
 
+    // Fonction qui permet de récupérer la langue active
     public static function getLanguage(): string
     {
         if (!isset($_SESSION[self::SESSION_KEY])) {
@@ -20,6 +21,7 @@ class LanguageController
         return self::LANGUAGES[$_SESSION[self::SESSION_KEY]] ?? '';
     }
 
+    // Fonction qui permet de définir la langue
     public static function setLanguage(string $langId): void
     {
         if (!array_key_exists($langId, self::LANGUAGES)) {
@@ -28,7 +30,7 @@ class LanguageController
         $_SESSION[self::SESSION_KEY] = $langId;
     }
 
-    // Bonus : méthode utilitaire pour avoir toutes les langues disponibles
+    // Fonction bonus pour récupérer 
     public static function getAvailableLanguages(): array
     {
         return self::LANGUAGES;
