@@ -5,7 +5,7 @@
 sudo dpkg-reconfigure locales
 ```
 2. Ensuite cochez les langues que vous voulez (dans notre cas : français, anglais, allemand).
-3. Sélectionnez la langue par défaut `fr_FR.utf8`.
+3. Sélectionnez la langue par défaut `C.utf8`.
 4. Quand vous êtes de nouveau sur la console, quittez votre WSL avec `exit`
 5. Dans *Windows Powershell* en **administrateur**, fermez complétement votre WSL avec cette commande :
 ```powershell
