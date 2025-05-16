@@ -15,10 +15,10 @@ class LanguageController
         'ja' => 'ja_JP',
     ];
     public const LANGUAGES_TEXT = [
-        'fr' => 'français',
-        'en' => 'english',
-        'es' => 'espanõl',
-        'it' => 'italian',
+        'fr' => 'Français',
+        'en' => 'English',
+        'es' => 'Espanõl',
+        'it' => 'Italian',
         'ja' => '日本語',
     ];
 

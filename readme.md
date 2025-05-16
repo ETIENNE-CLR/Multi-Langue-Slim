@@ -49,7 +49,13 @@ class LanguageController
     private const SESSION_KEY = 'language';
     private const LANGUAGES = [
         'fr' => 'fr_FR',
-        'en' => 'en_US',
+        'en' => 'en_US'
+        // le reste de vos langues...
+    ];
+    public const LANGUAGES_TEXT = [
+        'fr' => 'Français',
+        'en' => 'English'
+        // le reste de vos langues...
     ];
 
     // Fonction qui permet de récupérer la langue active
