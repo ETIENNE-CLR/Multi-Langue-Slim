@@ -10,6 +10,16 @@ class LanguageController
     private const LANGUAGES = [
         'fr' => 'fr_FR',
         'en' => 'en_US',
+        'es' => 'es_ES',
+        'it' => 'it_IT',
+        'ja' => 'ja_JP',
+    ];
+    public const LANGUAGES_TEXT = [
+        'fr' => 'français',
+        'en' => 'english',
+        'es' => 'espanõl',
+        'it' => 'italian',
+        'ja' => '日本語',
     ];
 
     // Fonction qui permet de récupérer la langue active
@@ -30,9 +40,15 @@ class LanguageController
         $_SESSION[self::SESSION_KEY] = $langId;
     }
 
-    // Fonction bonus pour récupérer 
+    // Fonction bonus pour récupérer les langues disponibles
     public static function getAvailableLanguages(): array
     {
         return self::LANGUAGES;
+    }
+
+    // Fonction qui dit si la clé de la langue entré en paramètre est celle qui est active
+    public static function isThisKeyCurrentLanguage(string $key): bool
+    {
+        return self::LANGUAGES[$key] == self::getLanguage();
     }
 }

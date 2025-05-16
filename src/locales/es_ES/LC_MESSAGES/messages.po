@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-05-16 10:07+0200\n"
+"PO-Revision-Date: 2025-05-16 10:12+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controllers/SiteController.php:29
+msgid "Voir les personnes"
+msgstr "Ver las personas"
+
+#: controllers/SiteController.php:41
+msgid "Détails d'une personne"
+msgstr "Detalles de una persona"
+
+#: controllers/SiteController.php:52
+msgid "Créer une personne"
+msgstr "Crear una persona"
+
+#: views/create.php:10 views/read.php:15
+msgid "Ajouter une personne"
+msgstr "Agregar una persona"
+
+#: views/create.php:17 views/details.php:10 views/read.php:24
+msgid "Nom"
+msgstr "Apellido"
+
+#: views/create.php:25 views/details.php:18 views/read.php:25
+msgid "Prénom"
+msgstr "Nombre"
+
+#: views/create.php:33 views/details.php:26 views/read.php:26
+msgid "Date de naissance"
+msgstr "Fecha de nacimiento"
+
+#: views/create.php:42 views/details.php:34 views/read.php:27
+msgid "Location"
+msgstr "Localización"
+
+#: views/create.php:50 views/details.php:42 views/read.php:28
+msgid "Depuis"
+msgstr "Desde"
+
+#: views/create.php:58 views/details.php:50 views/read.php:29
+msgid "Activités"
+msgstr "Actividades"
+
+#: views/create.php:70 views/details.php:59
+msgid "Retour"
+msgstr "Retorno"
+
+#: views/create.php:73
+msgid "Ajouter"
+msgstr "Agregar"
+
+#: views/read.php:13
+msgid "Liste des personnes"
+msgstr "Lista de las personas"

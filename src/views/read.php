@@ -5,8 +5,12 @@ use Controllers\LanguageController;
 <main class="col-lg-10 mx-auto m-5 p-3">
 
     <div class="d-flex justify-content-start gap-1">
-        <a class="btn btn-link" href="?lang=fr">fr</a>
-        <a class="btn btn-link" href="?lang=en">en</a>
+        <?php
+        foreach (LanguageController::LANGUAGES_TEXT as $key => $value) {
+            if (!LanguageController::isThisKeyCurrentLanguage($key)) {
+                echo '<a class="btn btn-link" href="?lang=' . $key . '">' . $value . '</a>';
+            }
+        } ?>
     </div>
 
     <div class="d-flex justify-content-between">

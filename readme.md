@@ -70,10 +70,16 @@ class LanguageController
         $_SESSION[self::SESSION_KEY] = $langId;
     }
 
-    // Fonction bonus pour récupérer 
+    // Fonction bonus pour récupérer les langues disponibles
     public static function getAvailableLanguages(): array
     {
         return self::LANGUAGES;
+    }
+
+    // Fonction qui dit si la clé de la langue entré en paramètre est celle qui est active
+    public static function isThisKeyCurrentLanguage(string $key): bool
+    {
+        return self::LANGUAGES[$key] == self::getLanguage();
     }
 }
 ```

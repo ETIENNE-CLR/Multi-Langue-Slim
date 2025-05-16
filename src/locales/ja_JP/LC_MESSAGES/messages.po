@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-05-16 10:18+0200\n"
+"PO-Revision-Date: 2025-05-16 10:21+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controllers/SiteController.php:29
+msgid "Voir les personnes"
+msgstr "人々に会いましょう"
+
+#: controllers/SiteController.php:41
+msgid "Détails d'une personne"
+msgstr "人の詳細"
+
+#: controllers/SiteController.php:52
+msgid "Créer une personne"
+msgstr "人を作る"
+
+#: views/create.php:10 views/read.php:18
+msgid "Ajouter une personne"
+msgstr "人を加える"
+
+#: views/create.php:17 views/details.php:10 views/read.php:27
+msgid "Nom"
+msgstr "名字"
+
+#: views/create.php:25 views/details.php:18 views/read.php:28
+msgid "Prénom"
+msgstr "名前"
+
+#: views/create.php:33 views/details.php:26 views/read.php:29
+msgid "Date de naissance"
+msgstr "生年月日"
+
+#: views/create.php:42 views/details.php:34 views/read.php:30
+msgid "Location"
+msgstr "位置"
+
+#: views/create.php:50 views/details.php:42 views/read.php:31
+msgid "Depuis"
+msgstr "以来"
+
+#: views/create.php:58 views/details.php:50 views/read.php:32
+msgid "Activités"
+msgstr "活動"
+
+#: views/create.php:70 views/details.php:59
+msgid "Retour"
+msgstr "戻っ"
+
+#: views/create.php:73
+msgid "Ajouter"
+msgstr "を追加する"
+
+#: views/read.php:16
+msgid "Liste des personnes"
+msgstr "人"
