@@ -1,5 +1,7 @@
 <?php
 // Indiquer les classes à utiliser
+
+use Controllers\LanguageController;
 use Slim\Factory\AppFactory;
 
 // Activer le chargement automatique des classes
@@ -15,16 +17,15 @@ $app->addErrorMiddleware(true, true, true);
 require __DIR__ . '/../routes/web.php';
 
 // Multi-langues
-$lg = 'fr_FR';
-$lg = 'en_US';
+session_start();
+$lg = LanguageController::getLanguage();
 $charset = 'UTF-8';
 $locale = "$lg.$charset";
 putenv("LC_ALL=$locale");
-$xx = setlocale(LC_ALL, $locale);
-echo $xx;
-$xx = bindtextdomain('messages', __DIR__ . '/../locales');
-$xx = bind_textdomain_codeset('messages', $charset);
-$xx = textdomain('messages');
+setlocale(LC_ALL, $locale);
+bindtextdomain('messages', __DIR__ . '/../locales');
+bind_textdomain_codeset('messages', $charset);
+textdomain('messages');
 
 // Lancer l'application
 $app->run();
