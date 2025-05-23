@@ -111,18 +111,33 @@ class Activites implements ICRUD
     {
         try {
             // Init
+            // Query qui prend la traduction de la langue choisie + la langue par défaut
+            // Et remplace la langue par la langue par défaut si elle n'existe pas
             $db = PDOSingleton::getInstance();
-            $stmt = $db->prepare('SELECT Activite_traduction.nom
-            FROM Activite_traduction
-            JOIN Pratique ON Activite_traduction.id = Pratique.idActivite
-            JOIN Personne ON Pratique.idPersonne = Personne.id
-            JOIN Langue ON Activite_traduction.lang = Langue.lang
-            WHERE Personne.id = :id AND Langue.lang = :lang');
+            $stmt = $db->prepare('SELECT
+                COALESCE(
+                    (
+                        SELECT Activite_traduction.nom
+                        FROM Activite_traduction
+                        WHERE lang = :lang AND Activite.id = Activite_traduction.id
+                    ),
+                    (
+                        SELECT Activite_traduction.nom
+                        FROM Activite_traduction
+                        WHERE lang = :defaultLang AND Activite.id = Activite_traduction.id
+                    )
+                ) AS `nom`
+            FROM Activite
+            RIGHT JOIN Pratique ON Activite.id = Pratique.idActivite
+            RIGHT JOIN Personne ON Pratique.idPersonne = Personne.id
+            WHERE Personne.id = :id');
 
             // Execution du query
             $lang = LanguageController::getLanguage(true);
+            $defaultLang = LanguageController::DEFAULT_LANGUAGE;
             $stmt->bindParam(':id', $personneId, PDO::PARAM_INT);
             $stmt->bindParam(':lang', $lang, PDO::PARAM_STR);
+            $stmt->bindParam(':defaultLang', $defaultLang, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

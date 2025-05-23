@@ -23,10 +23,10 @@ use Controllers\LanguageController;
                     </button>
                     <ul class="dropdown-menu">
                         <?php
-                        foreach (LanguageController::LANGUAGES_TEXT as $key => $value) {
-                            if (!LanguageController::isThisKeyCurrentLanguage($key)) {
-                                echo '<li><a class="btn btn-link" href="?lang=' . $key . '">' . $value . '</a></li>';
-                            }
+                        foreach (LanguageController::LANGUAGES_TEXT() as $key => $value) {
+                            if (!LanguageController::isThisKeyCurrentLanguage($key)) { ?>
+                                <li><a class="btn btn-link" href="?lang='<?= $key ?>'"><?= $value ?></a></li>
+                        <?php }
                         }
                         ?>
                     </ul>

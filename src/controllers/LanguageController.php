@@ -3,24 +3,12 @@
 namespace Controllers;
 
 use Exception;
+use PDO;
 
 class LanguageController
 {
+    public const DEFAULT_LANGUAGE = 'fr';
     private const SESSION_KEY = 'language';
-    private const LANGUAGES = [
-        'fr' => 'fr_FR',
-        'en' => 'en_US',
-        'es' => 'es_ES',
-        'it' => 'it_IT',
-        'ja' => 'ja_JP',
-    ];
-    public const LANGUAGES_TEXT = [
-        'fr' => 'Français',
-        'en' => 'English',
-        'es' => 'Español',
-        'it' => 'Italian',
-        'ja' => '日本語',
-    ];
 
     /**
      * Fonction qui permet de récupérer la langue active
@@ -32,32 +20,95 @@ class LanguageController
     public static function getLanguage(bool $getKey = false): string
     {
         if (!isset($_SESSION[self::SESSION_KEY])) {
-            self::setLanguage('fr');
+            self::setLanguage(self::DEFAULT_LANGUAGE);
         }
-        
+
         return ($getKey) ?
             $_SESSION[self::SESSION_KEY] :
-            self::LANGUAGES[$_SESSION[self::SESSION_KEY]];
+            self::LANGUAGES()[$_SESSION[self::SESSION_KEY]];
     }
 
-    // Fonction qui permet de définir la langue
+    /**
+     * Fonction qui permet de définir la langue
+     * @param string $langId La langue à définir (exemple : `fr`, `en`)
+     */
     public static function setLanguage(string $langId): void
     {
-        if (!array_key_exists($langId, self::LANGUAGES)) {
+        if (!array_key_exists($langId, self::LANGUAGES())) {
             throw new Exception("Invalid language ID: $langId");
         }
         $_SESSION[self::SESSION_KEY] = $langId;
     }
 
-    // Fonction bonus pour récupérer les langues disponibles
-    public static function getAvailableLanguages(): array
+    /**
+     * Fonction pour récupérer les langues disponibles
+     * @return array les langues disponibles
+     */
+    private static function LANGUAGES(): array
     {
-        return self::LANGUAGES;
+        static $LANGUAGES = null;
+
+        if ($LANGUAGES == null) {
+            try {
+                // Init
+                $db = PDOSingleton::getInstance();
+                $sqlQuery = "SELECT * FROM Langue";
+                $stmt = $db->prepare($sqlQuery);
+
+                // Execution du query
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Sortie
+                $LANGUAGES = [];
+                foreach ($results as $record) {
+                    $LANGUAGES[$record['lang']] = $record['locale'];
+                }
+            } catch (Exception $e) {
+                throw new Exception($e->getMessage(), 1);
+            }
+        }
+        return $LANGUAGES;
     }
 
-    // Fonction qui dit si la clé de la langue entré en paramètre est celle qui est active
+    /**
+     * Fonction pour récupérer les langues en texte disponibles
+     * @return array les langues en texte disponibles
+     */
+    public static function LANGUAGES_TEXT(): array
+    {
+        static $LANGUAGES = null;
+
+        if ($LANGUAGES == null) {
+            try {
+                // Init
+                $db = PDOSingleton::getInstance();
+                $sqlQuery = "SELECT * FROM Langue";
+                $stmt = $db->prepare($sqlQuery);
+
+                // Execution du query
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Sortie
+                $LANGUAGES = [];
+                foreach ($results as $record) {
+                    $LANGUAGES[$record['lang']] = $record['nom'];
+                }
+            } catch (Exception $e) {
+                throw new Exception($e->getMessage(), 1);
+            }
+        }
+        return $LANGUAGES;
+    }
+
+    /**
+     * Fonction qui dit si la clé de la langue entré en paramètre est celle qui est active
+     * @param string $key Clé à vérifier
+     * @return bool Si la clé passée en paramètre correspond à la langue actuelle
+     */
     public static function isThisKeyCurrentLanguage(string $key): bool
     {
-        return self::LANGUAGES[$key] == self::getLanguage();
+        return self::LANGUAGES()[$key] == self::getLanguage();
     }
 }

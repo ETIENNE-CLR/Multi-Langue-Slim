@@ -33,26 +33,26 @@ DELETE FROM Personne WHERE id = :id
 
 -- TRADUCTION --
 
-SELECT * FROM PersonneActivities.Activite_traduction WHERE lang = 'fr';
-
--- Read principal
-SELECT
-	Personne.id,
-    Personne.nom,
-    Personne.prenom,
-    Personne.dateNaissance,
-    Localite.nom AS `Localite`,
-    Personne.depuis
-FROM PersonneActivities.Personne
-JOIN PersonneActivities.Localite ON Personne.idLocalite = Localite.id;
-            
 -- Récupérer toutes les activités d'un user dans une langue précise
-SELECT Activite_traduction.nom
-FROM Activite_traduction
-JOIN Pratique ON Activite_traduction.id = Pratique.idActivite
-JOIN Personne ON Pratique.idPersonne = Personne.id
-JOIN Langue ON Activite_traduction.lang = Langue.lang
-WHERE Personne.id = 1 AND Langue.lang = "fr";
+SELECT
+	Activite.id,
+    COALESCE(
+		(
+			SELECT Activite_traduction.nom
+			FROM Activite_traduction
+			WHERE lang = "es" AND Activite.id = Activite_traduction.id
+		),
+		(
+			SELECT Activite_traduction.nom
+			FROM Activite_traduction
+			WHERE lang = "fr" AND Activite.id = Activite_traduction.id
+		)
+    ) AS `nom`    
+FROM Activite
+RIGHT JOIN Pratique ON Activite.id = Pratique.idActivite
+RIGHT JOIN Personne ON Pratique.idPersonne = Personne.id
+WHERE Personne.id = 4;
+
 
 SELECT *
 FROM PersonneActivities.Activite_traduction;
