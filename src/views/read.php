@@ -10,30 +10,41 @@ use Controllers\LanguageController;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end gap-3" id="navbarNavAltMarkup">
-                <a href="/create" class="btn btn-success">
-                    <?= _("Ajouter une personne") ?>
-                    <i class="bi bi-person-fill-add"></i>
-                </a>
 
-                <!-- Choix de la langue -->
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <?= _("Langue") ?>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <?php
-                        foreach (LanguageController::LANGUAGES_TEXT() as $key => $value) {
-                            if (!LanguageController::isThisKeyCurrentLanguage($key)) { ?>
-                                <li><a class="btn btn-link" href="?lang='<?= $key ?>'"><?= $value ?></a></li>
-                        <?php }
-                        }
-                        ?>
-                    </ul>
+            <div class="collapse navbar-collapse justify-content-end gap-3" id="navbarNavAltMarkup">
+                <div class="navbar-nav d-flex align-items-center gap-2">
+                    <!-- Ajouter une personne -->
+                    <a href="/create" class="btn btn-success nav-item">
+                        <?= _("Ajouter une personne") ?>
+                        <i class="bi bi-person-fill-add"></i>
+                    </a>
+
+                    <!-- Ajouter une activité -->
+                    <a href="/create-activity" class="btn btn-primary nav-item">
+                        <?= _("Ajouter une activité") ?>
+                        <i class="bi bi-bicycle"></i>
+                    </a>
+
+                    <!-- Choix de la langue -->
+                    <div class="dropdown nav-item">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= _("Langue") ?>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <?php foreach (LanguageController::LANGUAGES_TEXT() as $key => $value): ?>
+                                <?php if (!LanguageController::isThisKeyCurrentLanguage($key)): ?>
+                                    <li>
+                                        <a class="dropdown-item" href="?lang=<?= $key ?>"><?= $value ?></a>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
+
 
     <!-- Tableau -->
     <table class="table table-striped border border-1">

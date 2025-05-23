@@ -6,6 +6,8 @@ use Controllers\SiteController;
 $app->get('/create[/]', [SiteController::class, 'createView']);
 $app->post('/create[/]', [SiteController::class, 'create']);
 
+$app->get('/create-activity[/]', [SiteController::class, 'createActivity']);
+
 $app->get('/[read]', [SiteController::class, 'read']);
 $app->get('/read/{id}[/]', [SiteController::class, 'detail']);
 

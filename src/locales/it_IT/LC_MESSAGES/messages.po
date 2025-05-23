@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-16 10:14+0200\n"
-"PO-Revision-Date: 2025-05-16 10:18+0200\n"
+"POT-Creation-Date: 2025-05-23 10:58+0200\n"
+"PO-Revision-Date: 2025-05-23 10:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -25,31 +25,31 @@ msgstr "Dettagli di una persona"
 msgid "Créer une personne"
 msgstr "creare una persona"
 
-#: views/create.php:10 views/read.php:16
+#: views/create.php:10 views/read.php:15
 msgid "Ajouter une personne"
 msgstr "aggiungere una persona"
 
-#: views/create.php:17 views/details.php:10 views/read.php:25
+#: views/create.php:17 views/details.php:10 views/read.php:43
 msgid "Nom"
 msgstr "nome"
 
-#: views/create.php:25 views/details.php:18 views/read.php:26
+#: views/create.php:25 views/details.php:18 views/read.php:44
 msgid "Prénom"
 msgstr "cognome"
 
-#: views/create.php:33 views/details.php:26 views/read.php:27
+#: views/create.php:33 views/details.php:26 views/read.php:45
 msgid "Date de naissance"
 msgstr "data di nascita"
 
-#: views/create.php:42 views/details.php:34 views/read.php:28
+#: views/create.php:42 views/details.php:34 views/read.php:46
 msgid "Location"
 msgstr "localizzazione"
 
-#: views/create.php:50 views/details.php:42 views/read.php:29
+#: views/create.php:50 views/details.php:42 views/read.php:47
 msgid "Depuis"
 msgstr "dal"
 
-#: views/create.php:58 views/details.php:50 views/read.php:30
+#: views/create.php:58 views/details.php:50 views/read.php:48
 msgid "Activités"
 msgstr "attività"
 
@@ -61,6 +61,10 @@ msgstr "ritorno"
 msgid "Ajouter"
 msgstr "aggiungere"
 
-#: views/read.php:14
+#: views/read.php:9
 msgid "Liste des personnes"
 msgstr "lista delle persone"
+
+#: views/read.php:22
+msgid "Langue"
+msgstr "lingua"

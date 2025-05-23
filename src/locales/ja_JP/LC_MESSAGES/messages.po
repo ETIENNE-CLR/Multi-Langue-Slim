@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-16 10:18+0200\n"
-"PO-Revision-Date: 2025-05-16 10:21+0200\n"
+"POT-Creation-Date: 2025-05-23 10:58+0200\n"
+"PO-Revision-Date: 2025-05-23 10:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -25,31 +25,31 @@ msgstr "人の詳細"
 msgid "Créer une personne"
 msgstr "人を作る"
 
-#: views/create.php:10 views/read.php:18
+#: views/create.php:10 views/read.php:15
 msgid "Ajouter une personne"
 msgstr "人を加える"
 
-#: views/create.php:17 views/details.php:10 views/read.php:27
+#: views/create.php:17 views/details.php:10 views/read.php:43
 msgid "Nom"
 msgstr "名字"
 
-#: views/create.php:25 views/details.php:18 views/read.php:28
+#: views/create.php:25 views/details.php:18 views/read.php:44
 msgid "Prénom"
 msgstr "名前"
 
-#: views/create.php:33 views/details.php:26 views/read.php:29
+#: views/create.php:33 views/details.php:26 views/read.php:45
 msgid "Date de naissance"
 msgstr "生年月日"
 
-#: views/create.php:42 views/details.php:34 views/read.php:30
+#: views/create.php:42 views/details.php:34 views/read.php:46
 msgid "Location"
 msgstr "位置"
 
-#: views/create.php:50 views/details.php:42 views/read.php:31
+#: views/create.php:50 views/details.php:42 views/read.php:47
 msgid "Depuis"
 msgstr "以来"
 
-#: views/create.php:58 views/details.php:50 views/read.php:32
+#: views/create.php:58 views/details.php:50 views/read.php:48
 msgid "Activités"
 msgstr "活動"
 
@@ -61,6 +61,10 @@ msgstr "戻っ"
 msgid "Ajouter"
 msgstr "を追加する"
 
-#: views/read.php:16
+#: views/read.php:9
 msgid "Liste des personnes"
 msgstr "人"
+
+#: views/read.php:22
+msgid "Langue"
+msgstr "言語"

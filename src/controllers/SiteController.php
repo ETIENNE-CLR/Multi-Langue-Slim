@@ -157,4 +157,12 @@ class SiteController
         return $response->withHeader('Location', '/')->withStatus(302);
         die();
     }
-}
+
+    public function createActivity(Request $request, Response $response, array $args): Response
+    {
+        // Construire la structure de la page
+        $dataLayout = ['title' => 'Créer une activité'];
+        $phpView = new PhpRenderer(__DIR__ . '/../views', $dataLayout);
+        $phpView->setLayout("_template.php");
+        return $phpView->render($response, 'createActivities.php');
+    }}
