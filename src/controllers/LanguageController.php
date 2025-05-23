@@ -17,18 +17,27 @@ class LanguageController
     public const LANGUAGES_TEXT = [
         'fr' => 'Français',
         'en' => 'English',
-        'es' => 'Espanõl',
+        'es' => 'Español',
         'it' => 'Italian',
         'ja' => '日本語',
     ];
 
-    // Fonction qui permet de récupérer la langue active
-    public static function getLanguage(): string
+    /**
+     * Fonction qui permet de récupérer la langue active
+     * @param bool $getKey Option qui permet de retourner la langue active de différente manière :
+     * - false (par défaut) : retourne le nom du package de la langue installée sur le serveur (exemple `fr_FR`, `en_US`)
+     * - true : retourne la clé de la langue (exemple `fr`, `en`)
+     * @return string La langue active du site sous le format demandé
+     */
+    public static function getLanguage(bool $getKey = false): string
     {
         if (!isset($_SESSION[self::SESSION_KEY])) {
             self::setLanguage('fr');
         }
-        return self::LANGUAGES[$_SESSION[self::SESSION_KEY]] ?? '';
+        
+        return ($getKey) ?
+            $_SESSION[self::SESSION_KEY] :
+            self::LANGUAGES[$_SESSION[self::SESSION_KEY]];
     }
 
     // Fonction qui permet de définir la langue

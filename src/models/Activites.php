@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use Controllers\LanguageController;
 use Controllers\PDOSingleton;
 use Interfaces\ICRUD;
 use DateTime;
@@ -109,13 +110,19 @@ class Activites implements ICRUD
     static function getActivitiesFromPersonneID(int $personneId)
     {
         try {
+            // Init
             $db = PDOSingleton::getInstance();
-            $stmt = $db->prepare('SELECT Activite.nom
-            FROM Activite
-            JOIN Pratique ON Activite.id = Pratique.idActivite
+            $stmt = $db->prepare('SELECT Activite_traduction.nom
+            FROM Activite_traduction
+            JOIN Pratique ON Activite_traduction.id = Pratique.idActivite
             JOIN Personne ON Pratique.idPersonne = Personne.id
-            WHERE Personne.id = :id');
+            JOIN Langue ON Activite_traduction.lang = Langue.lang
+            WHERE Personne.id = :id AND Langue.lang = :lang');
+
+            // Execution du query
+            $lang = LanguageController::getLanguage(true);
             $stmt->bindParam(':id', $personneId, PDO::PARAM_INT);
+            $stmt->bindParam(':lang', $lang, PDO::PARAM_STR);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

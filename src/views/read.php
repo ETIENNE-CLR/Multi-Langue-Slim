@@ -3,24 +3,39 @@
 use Controllers\LanguageController;
 ?>
 <main class="col-lg-10 mx-auto m-5 p-3">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><?= _("Liste des personnes") ?></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end gap-3" id="navbarNavAltMarkup">
+                <a href="/create" class="btn btn-success">
+                    <?= _("Ajouter une personne") ?>
+                    <i class="bi bi-person-fill-add"></i>
+                </a>
 
-    <div class="d-flex justify-content-start gap-1">
-        <?php
-        foreach (LanguageController::LANGUAGES_TEXT as $key => $value) {
-            if (!LanguageController::isThisKeyCurrentLanguage($key)) {
-                echo '<a class="btn btn-link" href="?lang=' . $key . '">' . $value . '</a>';
-            }
-        } ?>
-    </div>
+                <!-- Choix de la langue -->
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?= _("Langue") ?>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php
+                        foreach (LanguageController::LANGUAGES_TEXT as $key => $value) {
+                            if (!LanguageController::isThisKeyCurrentLanguage($key)) {
+                                echo '<li><a class="btn btn-link" href="?lang=' . $key . '">' . $value . '</a></li>';
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <div class="d-flex justify-content-between">
-        <h1 class="h2 mb-3"><?= _("Liste des personnes") ?></h1>
-        <a href="/create" class="btn btn-success mb-3">
-            <?= _("Ajouter une personne") ?>
-            <i class="bi bi-person-fill-add"></i>
-        </a>
-    </div>
-
+    <!-- Tableau -->
     <table class="table table-striped border border-1">
         <thead>
             <tr>
