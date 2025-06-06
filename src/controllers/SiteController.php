@@ -55,6 +55,7 @@ class SiteController
         return $phpView->render($response, 'create.php', [
             'allLocations' => Localite::read(),
             'allActivities' => Activites::read(),
+            'update' => false
         ]);
     }
 
@@ -102,7 +103,8 @@ class SiteController
         return $phpView->render($response, 'create.php', [
             'allLocations' => Localite::read(),
             'allActivities' => Activites::read(),
-            'aPersonne' => Personne::readByIdWithIDs($idPe)
+            'aPersonne' => Personne::readByIdWithIDs($idPe),
+            'update' => true
         ]);
     }
 
@@ -123,6 +125,7 @@ class SiteController
             $nom,
             $prenom,
             $dateNaissance,
+            // new DateTime($dateNaissance),
             $location,
             $depuis,
             $selectedActivities
@@ -134,6 +137,7 @@ class SiteController
         $newPersonne->update();
 
         // Lié les activitées aux personnes
+        Pratiquer::delete($newPersonne->id);
         foreach ($selectedActivities as $activity) {
             Pratiquer::makeRelation($newPersonne->id, (int)$activity);
         }
@@ -164,5 +168,7 @@ class SiteController
         $dataLayout = ['title' => 'Créer une activité'];
         $phpView = new PhpRenderer(__DIR__ . '/../views', $dataLayout);
         $phpView->setLayout("_template.php");
-        return $phpView->render($response, 'createActivities.php');
+        return $phpView->render($response, 'createActivities.php', [
+            'langages' => LanguageController::LANGUAGES_TEXT()
+        ]);
     }}

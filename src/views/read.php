@@ -12,7 +12,7 @@ use Controllers\LanguageController;
             </button>
 
             <div class="collapse navbar-collapse justify-content-end gap-3" id="navbarNavAltMarkup">
-                <div class="navbar-nav d-flex align-items-center gap-2">
+                <div class="navbar-nav d-flex align-items-end gap-2">
                     <!-- Ajouter une personne -->
                     <a href="/create" class="btn btn-success nav-item">
                         <?= _("Ajouter une personne") ?>

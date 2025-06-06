@@ -54,12 +54,42 @@ De plus, vérifier bien que vous avez **adapté votre code** en respectant ce 's
 Pour que le domaine (le choix de la langue) reconnaisse quel texte changer/afficher.
 
 ## 3. Ajouter/Modifier les langues
+### Dans l'arborescance
+Dans le dossier `src/`, pensez à créer un dossier `locales/`. Voici comment vous aller stocker les langues du site :
+```
+/src/locales/.
+    ├── en_US 
+    │   └── LC_MESSAGES
+    │       ├── messages.mo
+    │       └── messages.po
+    ├── es_ES
+    │   └── LC_MESSAGES
+    │       ├── messages.mo
+    │       └── messages.po
+    ├── fr_FR
+    │   └── LC_MESSAGES
+    │       ├── messages.mo
+    │       └── messages.po
+    ├── it_IT
+    │   └── LC_MESSAGES
+    │       ├── messages.mo
+    │       └── messages.po
+    └── ja_JP
+        └── LC_MESSAGES
+            ├── messages.mo
+            └── messages.po
+```
+
+### Dans Poedit
 Pour pouvoir gérer les langues, j'ai utilisé [Poedit](https://poedit.net/).
 
-Au démarrage de Poedit, il va falloir faire `Fichier > Nouveau...`. Il va falloir choisir sa langue. Ensuite pensez bien **à sauvegarder le fichier** (îcone en haut à gauche). Ensuite faire `extraire depuis les sources`. Ajouter dans **les chemins,** les dossiers `src/` et `views/`.
+Au démarrage de Poedit, il va falloir faire `Fichier > Nouveau...`. Il va falloir choisir sa langue. Ensuite pensez bien **à sauvegarder le fichier** (îcone en haut à gauche). Ensuite faire `extraire depuis les sources`. Ajouter dans **les chemins,** les dossiers `src/`.
 
 > Pour **la traduction**, vous n'êtes **pas obligé de payer** la version premium, vous pouvez indiquer **manuellement** la traduction de chaque mot !
 
+#### Mettre à jour les traductions
+Si vous avez rajouté du texte après avoir sauvegardé le fichier `.po`, il suffit d'ouvrir votre fichier `.po` dans l'éditeur puis de
+**mettre à jour depuis le code**. C'est un des boutons du menu principal.
 
 ## 4. Changement de la langue via le site
 Pour nous faciliter la tâche, voici une petite classe php `LanguageController` qui va nous aider à définir/changer la langue :
@@ -102,6 +132,7 @@ class LanguageController
     /**
      * Fonction pour récupérer les langues disponibles
      * @return array les langues disponibles
+     * - Exemple de retour : `['en' => 'en_US', 'fr' => 'fr_FR']`
      */
     private static function LANGUAGES(): array
     {
@@ -133,6 +164,7 @@ class LanguageController
     /**
      * Fonction pour récupérer les langues en texte disponibles
      * @return array les langues en texte disponibles
+     * - Exemple de retour : `['en' => 'English', 'fr' => 'Français']`
      */
     public static function LANGUAGES_TEXT(): array
     {
@@ -201,13 +233,22 @@ Pour finaliser le multi-langue sur votre site, il suffit de faire un lien compre
     <a class="btn btn-link" href="?lang=en">en</a>
 </div>
 ```
-Cet exemple peut être optimisé dynamiquement avec du PHP :
-```php
-<?php
-    foreach (LanguageController::LANGUAGES_TEXT() as $key => $value) {
-        if (!LanguageController::isThisKeyCurrentLanguage($key)) {
-            echo '<li><a class="btn btn-link" href="?lang=' . $key . '">' . $value . '</a></li>';
-        }
-    }
-?>
+#### Exemple plus poussé
+Exemple dynamique utilisant **Bootstrap** et la classe `LanguageController`
+```html
+<!-- Choix de la langue -->
+<div class="dropdown nav-item">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <?= _("Langue") ?>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <?php foreach (LanguageController::LANGUAGES_TEXT() as $key => $value): ?>
+            <?php if (!LanguageController::isThisKeyCurrentLanguage($key)): ?>
+                <li>
+                    <a class="dropdown-item" href="?lang=<?= $key ?>"><?= $value ?></a>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
 ```

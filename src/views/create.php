@@ -4,10 +4,10 @@ use Controllers\HTMLGenerator;
 
 $modifyPage = (isset($aPersonne) && array_count_values($aPersonne) > 0);
 ?>
-<form action="/create" method="post">
+<form action="/<?= ($update ? 'update/'. $aPersonne['id'] : 'create') ?>" method="post">
     <div class="container col-md-7 mx-auto mt-3">
         <h2 class="mb-5">
-            <?= _("Ajouter une personne") ?>
+            <?= _(($update ? 'Mettre à jour' : 'Créer') . " une personne") ?>
             <i class="bi bi-person-fill-add"></i>
         </h2>
 
@@ -70,7 +70,7 @@ $modifyPage = (isset($aPersonne) && array_count_values($aPersonne) > 0);
                 <a href="/" class="btn btn-secondary"><?= _("Retour") ?></a>
             </div>
             <div class="mb-3 col-8">
-                <button type="submit" id="submitForm" class="btn btn-primary"><?= _("Ajouter") ?></button>
+                <button type="submit" id="submitForm" class="btn btn-primary"><?= _(($update ? 'Mettre à jour' : 'Créer')) ?></button>
             </div>
         </div>
     </div>

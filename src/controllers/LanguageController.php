@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Exception;
+use Models\PDOSingleton;
 use PDO;
 
 class LanguageController
@@ -43,6 +44,7 @@ class LanguageController
     /**
      * Fonction pour récupérer les langues disponibles
      * @return array les langues disponibles
+     * - Exemple de retour : `['en' => 'en_US', 'fr' => 'fr_FR']`
      */
     private static function LANGUAGES(): array
     {
@@ -74,6 +76,7 @@ class LanguageController
     /**
      * Fonction pour récupérer les langues en texte disponibles
      * @return array les langues en texte disponibles
+     * - Exemple de retour : `['en' => 'English', 'fr' => 'Français']`
      */
     public static function LANGUAGES_TEXT(): array
     {

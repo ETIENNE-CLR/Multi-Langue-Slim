@@ -2,7 +2,7 @@
 
 namespace Models;
 
-use Controllers\PDOSingleton;
+use Models\PDOSingleton;
 use Interfaces\ICRUD;
 use Models\Activites;
 use DateTime;
@@ -133,18 +133,27 @@ class Personne implements ICRUD
         try {
             $db = PDOSingleton::getInstance();
 
-            // Requête SQL avec des paramètres nommés pour éviter les injections SQL
+            // Requête SQL
             $stmt = $db->prepare(
-                "UPDATE Personne SET (nom = :nom, prenom = :prenom, dateNaissance = :dateNaissance, idLocalite = :idLocalite, depuis = :depuis)
+                "UPDATE Personne SET
+                nom = :nom,
+                prenom = :prenom,
+                dateNaissance = :dateNaissance,
+                idLocalite = :idLocalite,
+                depuis = :depuis
                 WHERE id = :id"
             );
+
+            // Variables pour les dates formatées
+            $formattedDateNaissance = $this->dateNaissance->format('Y-m-d');
+            $formattedDepuis = $this->depuis->format('Y-m-d');
 
             // Liaison des paramètres
             $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
             $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
-            $stmt->bindParam(':dateNaissance', $this->dateNaissance);
-            $stmt->bindParam(':idLocalite', $this->idLocalite);
-            $stmt->bindParam(':depuis', $this->depuis);
+            $stmt->bindParam(':dateNaissance', $formattedDateNaissance, PDO::PARAM_STR);
+            $stmt->bindParam(':idLocalite', $this->idLocalite, PDO::PARAM_INT);
+            $stmt->bindParam(':depuis', $formattedDepuis, PDO::PARAM_STR);
             $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
 
             // Execution de la requête

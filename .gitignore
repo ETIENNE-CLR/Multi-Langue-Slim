@@ -1,6 +1,6 @@
 /.vscode/
 
-/vendor/
+**/vendor/
 
 *Zone.Identifier*
 

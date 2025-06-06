@@ -2,7 +2,7 @@
 
 namespace Models;
 
-use Controllers\PDOSingleton;
+use Models\PDOSingleton;
 use Interfaces\ICRUD;
 use DateTime;
 use Exception;

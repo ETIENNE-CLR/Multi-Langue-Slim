@@ -3,7 +3,7 @@
 namespace Models;
 
 use Controllers\LanguageController;
-use Controllers\PDOSingleton;
+use Models\PDOSingleton;
 use Interfaces\ICRUD;
 use DateTime;
 use Exception;

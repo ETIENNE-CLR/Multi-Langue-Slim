@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-23 10:54+0200\n"
-"PO-Revision-Date: 2025-05-23 10:56+0200\n"
+"POT-Creation-Date: 2025-06-06 09:31+0200\n"
+"PO-Revision-Date: 2025-06-06 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -26,35 +26,35 @@ msgstr "Person' details"
 msgid "Créer une personne"
 msgstr "Create a person"
 
-#: views/create.php:10 views/read.php:15
+#: views/create.php:10 views/read.php:18
 msgid "Ajouter une personne"
 msgstr "Add a person"
 
-#: views/create.php:17 views/details.php:10 views/read.php:43
+#: views/create.php:17 views/details.php:10 views/read.php:54
 msgid "Nom"
 msgstr "Firstname"
 
-#: views/create.php:25 views/details.php:18 views/read.php:44
+#: views/create.php:25 views/details.php:18 views/read.php:55
 msgid "Prénom"
 msgstr "Lastname"
 
-#: views/create.php:33 views/details.php:26 views/read.php:45
+#: views/create.php:33 views/details.php:26 views/read.php:56
 msgid "Date de naissance"
 msgstr "Birthdate"
 
-#: views/create.php:42 views/details.php:34 views/read.php:46
+#: views/create.php:42 views/details.php:34 views/read.php:57
 msgid "Location"
 msgstr "Location"
 
-#: views/create.php:50 views/details.php:42 views/read.php:47
+#: views/create.php:50 views/details.php:42 views/read.php:58
 msgid "Depuis"
 msgstr "From"
 
-#: views/create.php:58 views/details.php:50 views/read.php:48
+#: views/create.php:58 views/details.php:50 views/read.php:59
 msgid "Activités"
 msgstr "Activities"
 
-#: views/create.php:70 views/details.php:59
+#: views/create.php:70 views/createActivities.php:42 views/details.php:59
 msgid "Retour"
 msgstr "Back"
 
@@ -62,10 +62,34 @@ msgstr "Back"
 msgid "Ajouter"
 msgstr "Add"
 
+#: views/createActivities.php:21
+msgid "Nom de l'activité"
+msgstr "activity name"
+
+#: views/createActivities.php:22
+msgid "Foot Ball"
+msgstr ""
+
+#: views/createActivities.php:25
+msgid "Sigle de l'activité"
+msgstr "Activity sign"
+
+#: views/createActivities.php:26
+msgid "FIFA"
+msgstr ""
+
+#: views/createActivities.php:32
+msgid "Description de l'activité"
+msgstr "description of the activity"
+
 #: views/read.php:9
 msgid "Liste des personnes"
 msgstr "Persons' list"
 
-#: views/read.php:22
+#: views/read.php:24
+msgid "Ajouter une activité"
+msgstr "add an activity"
+
+#: views/read.php:31
 msgid "Langue"
 msgstr "Language"
