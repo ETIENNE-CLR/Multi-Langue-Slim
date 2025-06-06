@@ -98,6 +98,7 @@ class LanguageController
 {
     public const DEFAULT_LANGUAGE = 'fr';
     private const SESSION_KEY = 'language';
+    public const CHARSET = 'UTF-8';
 
     /**
      * Fonction qui permet de récupérer la langue active
@@ -214,7 +215,7 @@ if (isset($_GET['lang'])) {
 
 // Définition de la langue
 $lg = LanguageController::getLanguage();
-$charset = 'UTF-8';
+$charset = LanguageController::CHARSET;
 $locale = "$lg.$charset";
 putenv("LC_ALL=$locale");
 setlocale(LC_ALL, $locale);

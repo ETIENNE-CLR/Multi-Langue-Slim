@@ -10,6 +10,7 @@ class LanguageController
 {
     public const DEFAULT_LANGUAGE = 'fr';
     private const SESSION_KEY = 'language';
+    public const CHARSET = 'UTF-8';
 
     /**
      * Fonction qui permet de récupérer la langue active
